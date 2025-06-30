@@ -1,0 +1,44 @@
+{
+    "port": 8004,
+    "appName": "order-service",
+    "appEnv": "local",
+    "signatureKey": "",
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "name": "order_service",
+      "username": "root",
+      "password": "root_password",
+      "maxOpenConnection": 10,
+      "maxLifetimeConnection": 10,
+      "maxIdleConnection": 10,
+      "maxIdleTime": 10
+    },
+    "rateLimiterMaxRequest": 1000,
+    "rateLimiterTimeSecond": 60,
+    "internalService": {
+      "user": {
+        "host": "http://localhost:8001",
+        "signatureKey": "sMX8IoeuUVFw2ciFK11UCvvwmZuH3L46"
+      },
+      "field": {
+        "host": "http://localhost:8002",
+        "signatureKey": "C6slUTczRRG0fcNWrD6eJM2z7yH9rzDV"
+      },
+      "payment": {
+        "host": "http://localhost:8003",
+        "signatureKey": "C7mXnV8rTqZ5sLpJ1KdBuY93gMNEo0Wx"
+      }
+    },
+    "kafka": {
+      "brokers": ["localhost:9092"],
+      "timeoutInMs": 100,
+      "maxRetry": 3,
+      "maxWaitTimeInMs": 100,
+      "maxProcessingTimeInMs": 200,
+      "backoffTimeInMs": 100,
+      "topics": ["payment-service-callback"],
+      "groupID": "payment-consumer-local"
+    }
+  }
+  
